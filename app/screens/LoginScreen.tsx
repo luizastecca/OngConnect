@@ -7,20 +7,19 @@ type Props = NativeStackScreenProps<RootStackParamList, 'Login'>;
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 export default function Index({ navigation }: Props) {
-const [user, setUser] = useState("");
+  const [user, setUser] = useState("");
   const [senha, setSenha] = useState("");
 
- const realizarLogin = () => {
-  if (user === 'Luiza' && senha === '2666') {
-    console.log("Login Feito com Sucesso")
-    navigation.navigate('Dashboard', {
-      userId: 'ID-' + Math.random().toString(),
-      userName: user
-    });
-  } else {
-    console.log("Falha no login: Verifique os critérios de validação.");
-  }
-};
+  const realizarLogin = () => {
+    if (user === 'Luiza' && senha === '2666') {
+      console.log("Login Feito com Sucesso")
+      navigation.navigate('MainTabs', {
+        usuario: user // Repassando o nome do usuário para as abas!
+      });
+    } else {
+      console.log("Falha no login: Verifique os critérios de validação.");
+    }
+  };
 
   return (
     <View style={styles.container}>
